@@ -106,6 +106,8 @@ def get_openapi_operation_parameters(
         }
         if field_info.description:
             parameter["description"] = field_info.description
+        if field_info.examples:
+            parameter["examples"] = jsonable_encoder(field_info.examples)
         if field_info.example != Undefined:
             parameter["example"] = jsonable_encoder(field_info.example)
         if field_info.deprecated:
