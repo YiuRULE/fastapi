@@ -290,7 +290,7 @@ class Body(FieldInfo):
         min_length: Optional[int] = None,
         max_length: Optional[int] = None,
         regex: Optional[str] = None,
-        examples: Optional[List[Any]] = None,
+        examples: Optional[Any] = None,
         example: Annotated[
             Optional[Any],
             deprecated(
@@ -309,9 +309,9 @@ class Body(FieldInfo):
                 stacklevel=1,
             )
         self.example = example
+        self.examples = examples
+
         extra_kwargs = {**extra}
-        if examples is not None:
-            extra_kwargs["examples"] = examples
         super().__init__(
             default=default,
             alias=alias,
@@ -347,7 +347,7 @@ class Form(Body):
         min_length: Optional[int] = None,
         max_length: Optional[int] = None,
         regex: Optional[str] = None,
-        examples: Optional[List[Any]] = None,
+        examples: Optional[Any] = None,
         example: Annotated[
             Optional[Any],
             deprecated(
@@ -393,7 +393,7 @@ class File(Form):
         min_length: Optional[int] = None,
         max_length: Optional[int] = None,
         regex: Optional[str] = None,
-        examples: Optional[List[Any]] = None,
+        examples: Optional[Any] = None,
         example: Annotated[
             Optional[Any],
             deprecated(
